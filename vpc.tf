@@ -6,8 +6,6 @@ resource "aws_vpc" "default" {
         Name = "${var.vpc_name}"
 	Owner = "Sreeharsha Veerapalli"
 	environment = "${var.environment}"
-    moviesname = var.moviesname
-    leadactor = var.leadactor
     }
 }
 

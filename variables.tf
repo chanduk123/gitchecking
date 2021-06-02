@@ -37,6 +37,4 @@ variable "instance_type" {
     prod = "t2.medium"
     }
 }
-
-variable "moviesname" {}
-variable "leadactor" {}
+# variable "vpc1_id" {}

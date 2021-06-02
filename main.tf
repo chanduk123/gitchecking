@@ -7,11 +7,11 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-    bucket = "chandustesting"
+    bucket = "chandutesting"
     key = "terraform.tfstate"
     region = "us-east-1"
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt = true
+    # dynamodb_table = "terraform-up-and-running-locks"
+    # encrypt = true
 
     }
 }
