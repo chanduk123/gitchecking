@@ -1,24 +1,32 @@
 # data "aws_ami" "my_ami" {
 #      most_recent      = true
 #      #name_regex       = "^mavrick"
-#      owners           = ["721834156908"]
+#      owners           = ["300424363506"]
 # }
 
 
-# resource "aws_instance" "web-1" {
-#     ami = var.imagename
-#     #ami = "ami-0d857ff0f5fc4e03b"
-#     #ami = "${data.aws_ami.my_ami.id}"
-#     availability_zone = "us-east-1a"
-#     instance_type = "t2.micro"
-#     key_name = "LaptopKey"
-#     subnet_id = "${aws_subnet.subnet1-public.id}"
-#     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
-#     associate_public_ip_address = true	
-#     tags = {
-#         Name = "Server-1"
-#         Env = "Prod"
-#         Owner = "Sree"
-# 	CostCenter = "ABCD"
-#     }
-# }
+resource "aws_instance" "web-1" {
+    ami = var.imagename
+    availability_zone = "us-east-1a"
+    instance_type = "t2.micro"
+    key_name = "LEARNAWS"
+    subnet_id = "${aws_subnet.subnet1-public.id}"
+    vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
+    associate_public_ip_address = true	
+    tags = {
+        Name = "Server-1"
+        Env = "Prod"
+        Owner = "CHANDU"
+	CostCenter = "ABCD"
+ 	user_data = <<-EOF
+		#! /bin/bash
+        sudo apt-get update
+#sudo amazon-linux-extras install nginx1
+		sudo apt-get install -y nginx
+		sudo systemctl start nginx
+		sudo systemctl enable nginx
+		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
+	EOF
+
+    }
+}

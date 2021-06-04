@@ -28,7 +28,7 @@ variable "azs" {
   type = list
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
-variable "environment" { default = "dev" }
+variable "environment"  {}
 variable "instance_type" {
   type = map
   default = {
@@ -38,3 +38,5 @@ variable "instance_type" {
     }
 }
 # variable "vpc1_id" {}
+variable "buckname"{}
+variable "imagename"{}
